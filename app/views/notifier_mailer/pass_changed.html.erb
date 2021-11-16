@@ -1,0 +1,10 @@
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<p>Hello, <b><%= @user.first_name %></b></p>
+<p>This mail is to inform you that, the password for your account has been changed.</p>
+<p>If you don't remember doing it, kindly <%= link_to "click here to reset your password.", password_forget_pass_url %></p>
+</body>
+</html>

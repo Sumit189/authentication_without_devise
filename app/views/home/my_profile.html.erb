@@ -1,0 +1,94 @@
+<div class="card wrapper">
+  <div class="card-header">
+    <h2 class=" d-flex justify-content-between mb-4">
+      <span>My_Profile </span>
+    </h2>
+    <% if flash[:notice] %>
+      <div class="alert alert-success" style="text-align: center">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" style="text-align: center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <%= form_with(model: @user, url: home_my_profile_path(@user)) do |form|%>
+      <% if @user.image.attached? %>
+        <center>
+          <%= image_tag @user.image, style:"width:50%" , id: "image_preview"%>
+        </center>
+        <% else %>
+        <center>
+          <%= image_tag "", style:"width:50%" , id: "image_preview"%>
+        </center>
+      <% end %>
+      <br>
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">   <%= form.label :image %></span>
+          </div>
+          <%= form.file_field :image, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :first_name %></span>
+          </div>
+          <%= form.text_field :first_name, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :last_name %></span>
+          </div>
+          <%= form.text_field :last_name, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :date_of_birth %></span>
+          </div>
+          <%= form.date_field :date_of_birth, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :mobile_number %></span>
+          </div>
+          <%= form.number_field :mobile_number, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+      <div class="card-footer">
+        <%= form.submit "Update", class:'btn btn-success' %>
+      </div>
+    <% end %>
+
+    <script>
+        $(document).ready(function(){
+            $('input[type="file"]').change(function(){
+                var image = window.URL.createObjectURL(this.files[0]);
+                document.getElementById("image_preview").src = image;
+            });
+        });
+    </script>
+
+  </div>
+
+</div>
+
+<script>
+  var x = document.getElementById("home");
+  x.classList.add("active");
+</script>

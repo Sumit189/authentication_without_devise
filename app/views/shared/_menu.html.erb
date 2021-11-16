@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><h2>PROFILER</h2></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/" id="home">My Profile</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <% if session[:user].nil? %>
+          <%= link_to "Login", "/authenticate/login", class:"btn btn-outline-dark", style: "margin-right: 10px" %>
+          <%= link_to "Signup", "/autheticate/signup", class:"btn btn-outline-dark", style: "margin-right: 10px" %>
+        <% else %>
+          <%= link_to "Reset Password", password_reset_password_path, class:"btn btn-outline-warning", style: "margin-right: 10px" %>
+          <%= link_to "Logout", "/home/logout", class:"btn btn-outline-danger", style: "margin-right: 10px" %>
+          <%= link_to "Delete Account", home_path(User.find(session[:user])), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-danger", style: "margin-right: 10px" %>
+        <%end %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,88 @@
+<div class="card wrapper">
+  <div class="card-header">
+    <h2>Create an account</h2>
+    <% if flash[:notice] %>
+      <div class="alert alert-success" style="text-align: center">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" style="text-align: center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="card-body">
+<%= form_with(mode: @user) do |form|%>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :first_name %></span>
+          </div>
+          <%= form.text_field :first_name, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :last_name %></span>
+          </div>
+          <%= form.text_field :last_name, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :date_of_birth %></span>
+          </div>
+          <%= form.date_field :date_of_birth, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :mobile_number %></span>
+          </div>
+          <%= form.number_field :mobile_number, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+  <div class="field">
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :email %></span>
+      </div>
+      <%= form.email_field :email, class: 'form-control',autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :password %></span>
+      </div>
+      <%= form.password_field :password_, class: 'form-control',autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :confirm_password %></span>
+      </div>
+      <%= form.password_field :confirm_password, class: 'form-control',autocomplete: 'off' %>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= form.submit "Sign Up", class:'btn btn-success' %>
+    <p>Already have an account? <%=link_to "Sign In", authenticate_login_path, style:" color: blue" %></p>
+  </div>
+<% end %>
+
+  </div>
+
+</div>

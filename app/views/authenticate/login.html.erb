@@ -1,0 +1,45 @@
+<div class="card wrapper">
+  <div class="card-header">
+    <h2>Login</h2>
+    <% if flash[:notice] %>
+    <div class="alert alert-success" style="text-align: center">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger" style="text-align: center">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+  </div>
+  <div class="card-body">
+    <%= form_with model: @user, url: authenticate_login_path do |form|%>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :email %></span>
+          </div>
+          <%= form.email_field :email, class: 'form-control',autocomplete: 'on' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :password %></span>
+          </div>
+          <%= form.password_field :password, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+      </div>
+      <div class="card-footer">
+        <%= form.submit "Sign In", class:'btn btn-success' %>
+        <p style="margin-top: 2%"><span>New User? <%= link_to "Sign Up Now!", authenticate_signup_path, style: "color: blue" %></span>
+            <span>   </span>
+          <span><%=link_to "Forgot Your Password?", password_forget_pass_path, style: "color: red" %></span>
+        </p>
+      </div>
+    <% end %>
+
+</div>

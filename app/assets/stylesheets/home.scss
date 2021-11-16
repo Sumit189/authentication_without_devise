@@ -1,0 +1,14 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.wrapper{
+  margin: 25px auto;
+  width: 50%;
+}
+
+@media all and (max-width: 600px) {
+  .wrapper {
+    width: 80%;
+  }
+}

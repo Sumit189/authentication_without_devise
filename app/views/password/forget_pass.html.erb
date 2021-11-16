@@ -1,0 +1,24 @@
+<div class="card wrapper">
+  <div class="card-header">
+    <h2>Forgot your password?</h2>
+  </div>
+  <div class="card-body">
+    <%= form_with(model: @user, url: password_forget_pass_path) do |form|%>
+
+      <div class="field">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :email %></span>
+          </div>
+          <%= form.email_field :email, class: 'form-control',autocomplete: 'off' %>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <%= form.submit "Submit", class:'btn btn-success' %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
