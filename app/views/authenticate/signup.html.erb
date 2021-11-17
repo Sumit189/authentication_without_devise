@@ -13,8 +13,18 @@
     <% end %>
   </div>
   <div class="card-body">
-<%= form_with(mode: @user) do |form|%>
+<%= form_with(url: authenticate_signup_path) do |form|%>
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this from being saved:</h2>
 
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="field">
         <div class="input-group mb-4">
           <div class="input-group-prepend">
@@ -65,7 +75,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :password %></span>
       </div>
-      <%= form.password_field :password_, class: 'form-control',autocomplete: 'off' %>
+      <%= form.password_field :password_ , class: 'form-control',autocomplete: 'off' %>
     </div>
   </div>
 
@@ -74,7 +84,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-default"> <%= form.label :confirm_password %></span>
       </div>
-      <%= form.password_field :confirm_password, class: 'form-control',autocomplete: 'off' %>
+      <%= form.password_field :password__confirmation, class: 'form-control',autocomplete: 'off' %>
     </div>
   </div>
   <div class="card-footer">

@@ -1,13 +1,12 @@
 class User < ApplicationRecord
-  attr_accessor :password_
+  attr_accessor :password_, :password__confirmation
   before_save :encrypt_password
   has_one_attached :image, dependent: :purge
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-  # validates :email, presence: true, uniqueness: true
-  # validates :password, presence: true, length: { minimum: 6 }
-  # validates :password_confirmation, presence: true
-
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :date_of_birth, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password_, presence: true, confirmation: true, length: { minimum: 6 }, on: :create
 
   def authenticate(email, user_pass)
     user = User.find_by(email: email)

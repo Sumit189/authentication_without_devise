@@ -13,8 +13,7 @@
       <% end %>
   </div>
   <div class="card-body">
-    <%= form_with model: @user, url: authenticate_login_path do |form|%>
-
+    <%= form_with model: @user, url: authenticate_login_path(@user) do |form|%>
       <div class="field">
         <div class="input-group mb-4">
           <div class="input-group-prepend">

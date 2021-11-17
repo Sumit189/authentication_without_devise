@@ -16,6 +16,17 @@
   </div>
   <div class="card-body">
     <%= form_with(model: @user, url: home_my_profile_path(@user)) do |form|%>
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <% if @user.image.attached? %>
         <center>
           <%= image_tag @user.image, style:"width:50%" , id: "image_preview"%>
